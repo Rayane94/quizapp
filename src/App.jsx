@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
-import FilterQuiz from './FilterQuiz'
-import QuizAccordion from './QuizAccordion'
+import FilterQuiz from './components/FilterQuiz'
+import QuizAccordion from './components/QuizAccordion'
 
 function App() {
   const [category, setCategory] = useState('all')

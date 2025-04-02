@@ -6,7 +6,7 @@ function QuestionItem({ question }) {
   const { dispatch } = useContext(QuizContext)
 
   const handleValidation = (answer) => {
-    if (question.validated === undefined) {
+    if (!question.answered) {
       dispatch({ type: 'VALIDATE_QUESTION', payload: { id: question.id, answer } })
     }
   }
@@ -16,7 +16,7 @@ function QuestionItem({ question }) {
       <Accordion.Header>
         <div className="d-flex justify-content-between w-100">
           <span>{question.question}</span>
-          {question.validated !== undefined && (
+          {question.answered && (
             <span>{question.validated ? 'Juste' : 'Faux'}</span>
           )}
         </div>
@@ -29,14 +29,14 @@ function QuestionItem({ question }) {
           <Button
             variant="success"
             onClick={() => handleValidation(true)}
-            disabled={question.validated !== undefined}
+            disabled={question.answered}
           >
             Juste
           </Button>
           <Button
             variant="danger"
             onClick={() => handleValidation(false)}
-            disabled={question.validated !== undefined}
+            disabled={question.answered}
           >
             Faux
           </Button>
